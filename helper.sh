@@ -39,7 +39,7 @@ do
     'run')
       # Start local INFLUXDB server
       echo -e "\n${cyan}==> Starting influxdb server '$INFLUX_NAME'${reset}"
-      docker run --name $INFLUX_NAME -d -p 8083:8083 -p 8086:8086 -p 25826:25826/udp -e DATABASES=$INFLUX_DATABASE ekino/influxdb:latest
+      docker run --name $INFLUX_NAME -d -p 8003:8083 -p 8086:8086 -p 25826:25826/udp -e DATABASES=$INFLUX_DATABASE ekino/influxdb:latest
       influxip=$(docker inspect --format {{.NetworkSettings.IPAddress}} $INFLUX_NAME)
       w=20 ; echo -e "\n${cyan}==> Waiting ${w}s for influxdb container${reset}" ; sleep $w
       docker logs $(docker ps -lq)
